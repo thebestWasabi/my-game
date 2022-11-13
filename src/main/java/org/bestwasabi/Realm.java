@@ -3,6 +3,7 @@ package org.bestwasabi;
 import org.bestwasabi.basic.GameCharacter;
 import org.bestwasabi.battle.Battle;
 import org.bestwasabi.characters.*;
+import org.bestwasabi.equipment.Weapon;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,10 +27,7 @@ public class Realm {
     }
 
     private static void commander(String readLine) throws IOException {
-        if (player == null) {
-            player = new Player(readLine, 100, 20, 10, 6, 0, 0);
-            printNavigation();
-        }
+        createHero(readLine);
         switch (readLine) {
             case "1":
                 System.out.println("Торговец еще не приехал в город");
@@ -52,6 +50,22 @@ public class Realm {
         commander(br.readLine());
     }
 
+    private static void createHero(String readLine) {
+        if (player == null) {
+            player = new Player(readLine, 100, 5, 10, 1, 0, 0);
+            player.setWeapon(new Weapon("Короткий железный меч", 4));
+            printNavigation();
+        }
+    }
+
+    private static GameCharacter createMonster() {
+        if (Math.random() <= 0.5) {
+            return new Goblin("Гоблин", 25, 5, 10, 1, 10, 2);
+        } else {
+            return new Skeleton("Скелет-воин", 50, 5, 10, 1, 10, 2);
+        }
+    }
+
     private static void commitFight() {
         battle.fight(player, createMonster(), new FightCallback() {
             @Override
@@ -65,20 +79,11 @@ public class Realm {
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void fightLost() {
                 System.exit(1);
             }
         });
-    }
-
-    private static GameCharacter createMonster() {
-        if (Math.random() <= 0.5) {
-            return new Goblin("Гоблин", 25, 10, 10, 6, 10, 2);
-        } else {
-            return new Skeleton("Скелет-воин", 50, 10, 10, 6, 10, 2);
-        }
     }
 
     private static void printNavigation() {

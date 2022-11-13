@@ -13,5 +13,4 @@ public class Weapon extends Equipment {
     public int applyDamage(int damage) {
         return damage + weaponDamage;
     }
-
 }
