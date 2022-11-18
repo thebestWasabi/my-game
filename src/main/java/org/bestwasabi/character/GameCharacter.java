@@ -1,7 +1,9 @@
-package org.bestwasabi.basic;
+package org.bestwasabi.character;
 
-import org.bestwasabi.characters.Fighter;
 import org.bestwasabi.equipment.Weapon;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class GameCharacter implements Fighter {
 
@@ -12,9 +14,13 @@ public abstract class GameCharacter implements Fighter {
     private int attackPower;
     private int xp;
     private int gold;
-    public Weapon weapon;
+    private Weapon weapon;
+
+    private List<Integer> allItems = new ArrayList<>();
+    private List<Integer> equippedItems = new ArrayList<>();
 
     public GameCharacter() {
+
     }
 
     public GameCharacter(String name, int hp, int defence, int strength, int attackPower, int xp, int gold) {
@@ -25,12 +31,28 @@ public abstract class GameCharacter implements Fighter {
         this.attackPower = attackPower;
         this.xp = xp;
         this.gold = gold;
+    }
 
+    // buy item
+
+
+    // sell
+
+    public void equipped(int id) {
+        if (allItems.contains(id) && !equippedItems.contains(id)) {
+            equippedItems.add(id);
+        }
+    }
+
+    public void unequipped(int id) {
+        if (equippedItems.contains(id)) {
+            equippedItems.remove(id);
+        }
     }
 
     @Override
     public int hitDamage() {
-        int damage = (strength / 2) + attackPower;
+        int damage = attackPower;
         if (weapon != null) {
             damage = weapon.applyDamage(damage);
         }
@@ -87,9 +109,5 @@ public abstract class GameCharacter implements Fighter {
 
     public void setGold(int gold) {
         this.gold = gold;
-    }
-
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
     }
 }

@@ -1,7 +1,5 @@
 package org.bestwasabi.equipment;
 
-import org.bestwasabi.basic.Equipment;
-
 public class Armor extends Equipment {
     private int defence;
 

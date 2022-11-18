@@ -1,4 +1,4 @@
-package org.bestwasabi.characters;
+package org.bestwasabi.character;
 
 public interface Fighter {
     int hitDamage();

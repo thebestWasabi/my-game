@@ -1,9 +1,7 @@
 package org.bestwasabi;
 
-import org.bestwasabi.basic.GameCharacter;
 import org.bestwasabi.battle.Battle;
-import org.bestwasabi.characters.*;
-import org.bestwasabi.equipment.Weapon;
+import org.bestwasabi.character.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -53,7 +51,6 @@ public class Realm {
     private static void createHero(String readLine) {
         if (player == null) {
             player = new Player(readLine, 100, 5, 10, 1, 0, 0);
-            player.setWeapon(new Weapon("Короткий железный меч", 4));
             printNavigation();
         }
     }

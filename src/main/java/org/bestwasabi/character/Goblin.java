@@ -1,6 +1,6 @@
-package org.bestwasabi.characters;
+package org.bestwasabi.character;
 
-import org.bestwasabi.basic.GameCharacter;
+import org.bestwasabi.character.GameCharacter;
 
 public class Goblin extends GameCharacter {
 

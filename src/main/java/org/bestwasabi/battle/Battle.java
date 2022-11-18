@@ -1,8 +1,8 @@
 package org.bestwasabi.battle;
 
-import org.bestwasabi.characters.FightCallback;
-import org.bestwasabi.basic.GameCharacter;
-import org.bestwasabi.characters.Player;
+import org.bestwasabi.character.FightCallback;
+import org.bestwasabi.character.GameCharacter;
+import org.bestwasabi.character.Player;
 
 public class Battle {
 
@@ -35,7 +35,7 @@ public class Battle {
 
     private static Boolean killedOrDied(GameCharacter attacker, GameCharacter defender, FightCallback fightCallback) {
         if (defender.getHp() - attacker.hitDamage() <= 0 && defender instanceof Player) {
-            System.out.println("Извините, вы пали в бою...");
+            System.out.println("Вас убили...");
             fightCallback.fightLost();
             return true;
         } else if (defender.getHp() - attacker.hitDamage() <= 0) {

@@ -1,4 +1,4 @@
-package org.bestwasabi.characters;
+package org.bestwasabi.character;
 
 public class Vendor implements Seller {
 
@@ -7,7 +7,7 @@ public class Vendor implements Seller {
         String result = "";
         if (goods == Goods.POTION) {
             result = "potion";
-        } else if (goods == Goods.SWORD) {
+        } else if (goods == Goods.WEAPON) {
             result = "sword";
         } else if (goods == Goods.ARMOR) {
             result = "armor";
@@ -17,7 +17,7 @@ public class Vendor implements Seller {
 
     public enum Goods {
         POTION,
-        SWORD,
+        WEAPON,
         ARMOR
     }
 }
